@@ -1,4 +1,4 @@
-package com.udea.sitas.domain.mappers;
+package com.udea.sitas.domain.mappers.luggage;
 
 import com.udea.sitas.domain.entities.LuggageEntity;
 import com.udea.sitas.domain.models.luggage.LuggageRequest;

@@ -4,8 +4,8 @@ import org.springframework.stereotype.Service;
 
 import com.udea.sitas.domain.entities.LuggageEntity;
 import com.udea.sitas.domain.entities.PlacementAreaEntity;
-import com.udea.sitas.domain.mappers.LuggageRequestMapper;
-import com.udea.sitas.domain.mappers.LuggageResponseMapper;
+import com.udea.sitas.domain.mappers.luggage.LuggageRequestMapper;
+import com.udea.sitas.domain.mappers.luggage.LuggageResponseMapper;
 import com.udea.sitas.domain.models.luggage.LuggageRequest;
 import com.udea.sitas.domain.models.luggage.LuggageResponse;
 import com.udea.sitas.domain.ports.luggage.LuggageSavePort;

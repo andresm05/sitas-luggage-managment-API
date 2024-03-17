@@ -1,4 +1,4 @@
-package com.udea.sitas.domain.mappers;
+package com.udea.sitas.domain.mappers.placementarea;
 
 import com.udea.sitas.domain.entities.PlacementAreaEntity;
 import com.udea.sitas.domain.models.placementArea.PlacementAreaResponse;
