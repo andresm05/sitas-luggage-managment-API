@@ -16,16 +16,20 @@ The SITAS Luggage Management API is a Spring Boot application designed to handle
 
 To get started with the SITAS Luggage Management API, follow these steps:
 
-1. **Clone the Repository**: Clone the project repository to your local machine.
-2. **Build the Project**: Navigate to the project directory and build the project using Maven or your preferred build tool.
-3. **Set Up Database Connection**: Create a file named `env.properties` in the root directory of your application. This file should contain the following information:
+1.  **Clone the Repository**: Clone the project repository to your local machine.
+2.  **Build the Project**: Navigate to the project directory and build the project using Maven or your preferred build tool.
+3.  **Set Up Database Connection**: Create a file named `env.properties` in the root directory of your application. This file should contain the following information:
 
-    ```
-    DB_URL=URL String Connection to the database
-    DB_USER=Username for the database
-    DB_PASSWORD=Password to enable connection to the database
-4. **Run the Application**: Run the Spring Boot application
-5. **Access the API**: Once the application is running, you can access the API endpoints using tools like Postman or by integrating it into your application.
+        ```
+        DB_URL=URL String Connection to the database
+        DB_USER=Username for the database
+        DB_PASSWORD=Password to enable connection to the database
+        ```
+
+    Keep in mind that the database used in this project is MySQL. If you want to use a different database, you will need to modify the dependencies in the `pom.xml` file accordingly.
+
+4.  **Run the Application**: Run the Spring Boot application
+5.  **Access the API**: Once the application is running, you can access the API endpoints using tools like Postman or by integrating it into your application.
 
 ## API Endpoints
 
@@ -43,6 +47,7 @@ The following are the main endpoints provided by the SITAS Luggage Management AP
 
 For detailed information on each endpoint, refer to the API documentation
 locally using Swagger:
+
 - `http://localhost:8080/sitas/doc/swagger-ui.html`.
 
 ## Contributing
@@ -52,5 +57,3 @@ Contributions to the SITAS Luggage Management API are welcome! If you find any i
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
-
-
