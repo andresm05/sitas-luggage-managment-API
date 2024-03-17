@@ -3,6 +3,7 @@ package com.udea.sitas.domain.mappers.luggage;
 import com.udea.sitas.domain.entities.LuggageEntity;
 import com.udea.sitas.domain.models.luggage.LuggageRequest;
 
+// This class maps the luggage request to the luggage entity
 public class LuggageRequestMapper {
 
     private LuggageRequest luggageRequest;

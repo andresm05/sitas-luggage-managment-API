@@ -11,6 +11,7 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
+// This class represents the placement area response
 public class PlacementAreaResponse {
     Long id;
     String name;

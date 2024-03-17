@@ -5,6 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+// This class represents the error message
 public class ErrorMessage {
 
     private String message;

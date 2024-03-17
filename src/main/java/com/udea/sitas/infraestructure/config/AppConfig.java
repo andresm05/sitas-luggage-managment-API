@@ -8,7 +8,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class AppConfig {
     
-        @Bean
+    // This method configures the CORS policy
+    @Bean
     WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override

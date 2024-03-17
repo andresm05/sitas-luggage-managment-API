@@ -4,6 +4,7 @@ import com.udea.sitas.domain.entities.LuggageEntity;
 import com.udea.sitas.domain.mappers.placementarea.PlacementAreaResponseMapper;
 import com.udea.sitas.domain.models.luggage.LuggageResponse;
 
+// This class maps the luggage entity to the luggage response
 public class LuggageResponseMapper {
 
     private LuggageEntity luggageEntity;

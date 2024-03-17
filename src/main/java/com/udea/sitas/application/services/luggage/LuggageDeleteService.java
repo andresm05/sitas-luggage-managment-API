@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @Transactional
 @RequiredArgsConstructor
+// This class is the service for the luggage delete use case
 public class LuggageDeleteService implements LuggageDeletePort {
 
     private final LuggageRepository luggageRepository;

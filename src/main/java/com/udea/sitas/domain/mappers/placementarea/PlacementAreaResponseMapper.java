@@ -3,6 +3,7 @@ package com.udea.sitas.domain.mappers.placementarea;
 import com.udea.sitas.domain.entities.PlacementAreaEntity;
 import com.udea.sitas.domain.models.placementArea.PlacementAreaResponse;
 
+// This class maps the placement area entity to the placement area response
 public class PlacementAreaResponseMapper {
 
     private PlacementAreaEntity placementAreaEntity;

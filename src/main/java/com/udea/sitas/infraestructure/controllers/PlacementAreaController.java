@@ -23,6 +23,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/placement-area")
+// This class is the controller for the placement area entity
 public class PlacementAreaController {
 
     private final PlacementAreaFindService placementAreaFindService;

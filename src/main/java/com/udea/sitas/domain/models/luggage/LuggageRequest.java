@@ -13,6 +13,7 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
+// This class represents the luggage request
 public class LuggageRequest {
 
     @JsonProperty("luggage_type")

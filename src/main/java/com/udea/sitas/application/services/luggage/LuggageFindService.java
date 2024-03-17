@@ -17,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @Transactional
 @RequiredArgsConstructor
+// This class is the service for the luggage find use case
 public class LuggageFindService implements LuggageFindPort {
 
     private final LuggageRepository luggageRepository;

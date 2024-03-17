@@ -14,6 +14,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder
 
+// This class represents the luggage response
 public class LuggageResponse {
 
     Long id;

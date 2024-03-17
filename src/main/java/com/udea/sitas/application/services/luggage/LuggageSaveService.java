@@ -13,7 +13,7 @@ import com.udea.sitas.infraestructure.exceptions.NumberNotValidException;
 import com.udea.sitas.infraestructure.exceptions.RestException;
 import com.udea.sitas.infraestructure.repositories.LuggageRepository;
 import com.udea.sitas.infraestructure.repositories.PlacementAreaRepository;
-import com.udea.sitas.infraestructure.utils.LuggageValidation;
+import com.udea.sitas.infraestructure.utils.validation.LuggageValidation;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +21,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @Transactional
 @RequiredArgsConstructor
+// This class is the service for the luggage save use case
 public class LuggageSaveService implements LuggageSavePort {
 
     private final LuggageRepository luggageRepository;

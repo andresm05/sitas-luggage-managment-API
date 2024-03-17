@@ -32,6 +32,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/luggage")
 @RequiredArgsConstructor
+// This class is the controller for the luggage entity
 public class LuggageController {
 
         private final LuggageSaveService luggageSaveService;

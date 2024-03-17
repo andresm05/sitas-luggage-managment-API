@@ -8,16 +8,22 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 @Table(name = "placement_area")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class PlacementAreaEntity {
 
+    public PlacementAreaEntity(String name) {
+        this.name = name;
+    }
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
