@@ -18,9 +18,14 @@ To get started with the SITAS Luggage Management API, follow these steps:
 
 1. **Clone the Repository**: Clone the project repository to your local machine.
 2. **Build the Project**: Navigate to the project directory and build the project using Maven or your preferred build tool.
-3. **Run the Application**: Run the Spring Boot application
+3. **Set Up Database Connection**: Create a file named `env.properties` in the root directory of your application. This file should contain the following information:
 
-4. **Access the API**: Once the application is running, you can access the API endpoints using tools like Postman or by integrating it into your application.
+    ```
+    DB_URL=URL String Connection to the database
+    DB_USER=Username for the database
+    DB_PASSWORD=Password to enable connection to the database
+4. **Run the Application**: Run the Spring Boot application
+5. **Access the API**: Once the application is running, you can access the API endpoints using tools like Postman or by integrating it into your application.
 
 ## API Endpoints
 
