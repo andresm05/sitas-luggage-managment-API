@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.udea.sitas.application.services.placementArea.PlacementAreaFindService;
 import com.udea.sitas.domain.models.placementArea.PlacementAreaResponse;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -22,12 +27,26 @@ public class PlacementAreaController {
 
     private final PlacementAreaFindService placementAreaFindService;
 
+    @Operation(summary = "Get all placement areas")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Placement areas found", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = PlacementAreaResponse.class)) }),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = RuntimeException.class)) })
+    })
     @GetMapping
     public ResponseEntity<List<PlacementAreaResponse>> findAll() {
         return new ResponseEntity<>(placementAreaFindService.findAll(),
                 HttpStatus.OK);
     }
 
+    @Operation(summary = "Get a placement area by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Placement area found", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = PlacementAreaResponse.class)) }),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = RuntimeException.class)) })
+    })
     @GetMapping("/{id}")
     public ResponseEntity<Optional<PlacementAreaResponse>> findById(@PathVariable Long id) {
         return new ResponseEntity<>(placementAreaFindService.findById(id),

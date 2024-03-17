@@ -20,6 +20,11 @@ import com.udea.sitas.domain.ports.luggage.LuggageFindPort;
 import com.udea.sitas.domain.ports.luggage.LuggageSavePort;
 import com.udea.sitas.infraestructure.exceptions.RestException;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -31,21 +36,51 @@ public class LuggageController {
     private final LuggageFindPort luggageFindPort;
     private final LuggageDeletePort luggageDeletePort;
 
+    @Operation(summary = "Create a new luggage")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Luggage created", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = LuggageResponse.class))
+            }),
+            @ApiResponse(responseCode = "400", description = "Invalid input"),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = RuntimeException.class)) })
+    })
     @PostMapping
     public ResponseEntity<LuggageResponse> findAll(@RequestBody LuggageRequest luggageRequest) throws RestException {
         return new ResponseEntity<>(luggageSavePort.save(luggageRequest), HttpStatus.CREATED);
     }
 
+    @Operation(summary = "Get all luggages")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Luggages found", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = LuggageResponse.class)) }),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = RuntimeException.class)) })
+    })
     @GetMapping
     public ResponseEntity<List<LuggageResponse>> findAll() {
         return new ResponseEntity<>(luggageFindPort.findAll(), HttpStatus.OK);
     }
 
+    @Operation(summary = "Get a luggage by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Luggage found", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = LuggageResponse.class)) }),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = RuntimeException.class)) })
+    })
     @GetMapping("/{id}")
     public ResponseEntity<Optional<LuggageResponse>> findById(@PathVariable Long id) {
         return new ResponseEntity<>(luggageFindPort.findById(id), HttpStatus.OK);
     }
 
+    @Operation(summary = "Delete a luggage by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "Luggage deleted", content = @Content(mediaType = "application/json")),
+            @ApiResponse(responseCode = "404", description = "Luggage not found"),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = RuntimeException.class)) })
+    })
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         luggageDeletePort.delete(id);

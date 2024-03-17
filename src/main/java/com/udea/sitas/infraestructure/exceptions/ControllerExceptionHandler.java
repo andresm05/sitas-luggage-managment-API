@@ -17,7 +17,7 @@ public class ControllerExceptionHandler extends RuntimeException {
     }
 
     @ExceptionHandler(NoSuchElementException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorMessage handleNoSuchElementException(Exception e) {
         return new ErrorMessage(e.getMessage(), "no se encontró el elemento");
     }
