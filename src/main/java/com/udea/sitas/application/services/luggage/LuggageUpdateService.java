@@ -4,11 +4,10 @@ import org.springframework.stereotype.Service;
 
 import com.udea.sitas.domain.entities.LuggageEntity;
 import com.udea.sitas.domain.entities.PlacementAreaEntity;
-import com.udea.sitas.domain.mappers.luggage.LuggageRequestMapper;
 import com.udea.sitas.domain.mappers.luggage.LuggageResponseMapper;
 import com.udea.sitas.domain.models.luggage.LuggageRequest;
 import com.udea.sitas.domain.models.luggage.LuggageResponse;
-import com.udea.sitas.domain.ports.luggage.LuggageSavePort;
+import com.udea.sitas.domain.ports.luggage.LuggageUpdatePort;
 import com.udea.sitas.infraestructure.exceptions.NumberNotValidException;
 import com.udea.sitas.infraestructure.exceptions.RestException;
 import com.udea.sitas.infraestructure.repositories.LuggageRepository;
@@ -19,15 +18,20 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
-@Transactional
 @RequiredArgsConstructor
-public class LuggageSaveService implements LuggageSavePort {
+@Transactional
+public class LuggageUpdateService implements LuggageUpdatePort {
 
     private final LuggageRepository luggageRepository;
     private final PlacementAreaRepository placementAreaRepository;
 
     @Override
-    public LuggageResponse save(LuggageRequest luggageRequest) throws RestException  {
+    public LuggageResponse update(LuggageRequest luggageRequest, Long id) throws RestException {
+
+        // validate if the luggage exists
+        LuggageEntity luggage = luggageRepository.findById(id).orElseThrow();
+
+        // validate the fields of the luggage request
         double[] decimals = {
                 luggageRequest.getWeight(),
                 luggageRequest.getHeight(),
@@ -51,13 +55,24 @@ public class LuggageSaveService implements LuggageSavePort {
         PlacementAreaEntity placementArea = placementAreaRepository.findById(luggageRequest.getPlacementAreaId())
                 .orElseThrow();
 
-        // create the luggage
-        LuggageEntity luggage = LuggageRequestMapper.builder()
-                .withLuggageRequest(luggageRequest)
-                .mapToEntity();
-
-        // set the placement area to the luggage
+        // update the luggage
+        luggage.setLuggageType(luggageRequest.getLuggageType());
+        if (luggageRequest.getExtraCharge() != null) {
+            luggage.setExtraCharge(luggageRequest.getExtraCharge());
+        }
+        if (luggageRequest.getQuantity() != null) {
+            luggage.setQuantity(luggageRequest.getQuantity());
+        }
+        luggage.setQuantity(luggageRequest.getQuantity());
+        luggage.setWidth(luggageRequest.getWidth());
+        luggage.setHeight(luggageRequest.getHeight());
+        luggage.setLength(luggageRequest.getLength());
+        luggage.setWeight(luggageRequest.getWeight());
+        luggage.setDescription(luggageRequest.getDescription());
         luggage.setPlacementArea(placementArea);
+        luggage.setUserId(luggageRequest.getUserId());
+        luggage.setFlightId(luggageRequest.getFlightId());
+        luggage.setBookingId(luggageRequest.getBookingId());
 
         // save the luggage and return the response
         return LuggageResponseMapper.builder()

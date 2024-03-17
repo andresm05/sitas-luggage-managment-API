@@ -7,9 +7,11 @@ import org.springframework.stereotype.Service;
 import com.udea.sitas.domain.ports.luggage.LuggageDeletePort;
 import com.udea.sitas.infraestructure.repositories.LuggageRepository;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class LuggageDeleteService implements LuggageDeletePort {
 

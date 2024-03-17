@@ -9,15 +9,17 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.udea.sitas.application.services.luggage.LuggageDeleteService;
+import com.udea.sitas.application.services.luggage.LuggageFindService;
+import com.udea.sitas.application.services.luggage.LuggageSaveService;
+import com.udea.sitas.application.services.luggage.LuggageUpdateService;
 import com.udea.sitas.domain.models.luggage.LuggageRequest;
 import com.udea.sitas.domain.models.luggage.LuggageResponse;
-import com.udea.sitas.domain.ports.luggage.LuggageDeletePort;
-import com.udea.sitas.domain.ports.luggage.LuggageFindPort;
-import com.udea.sitas.domain.ports.luggage.LuggageSavePort;
 import com.udea.sitas.infraestructure.exceptions.RestException;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -32,59 +34,75 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class LuggageController {
 
-    private final LuggageSavePort luggageSavePort;
-    private final LuggageFindPort luggageFindPort;
-    private final LuggageDeletePort luggageDeletePort;
+        private final LuggageSaveService luggageSaveService;
+        private final LuggageUpdateService luggageUpdateService;
+        private final LuggageFindService luggageFindService;
+        private final LuggageDeleteService luggageDeleteService;
 
-    @Operation(summary = "Create a new luggage")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Luggage created", content = {
-                    @Content(mediaType = "application/json", schema = @Schema(implementation = LuggageResponse.class))
-            }),
-            @ApiResponse(responseCode = "400", description = "Invalid input"),
-            @ApiResponse(responseCode = "500", description = "Internal server error", content = {
-                    @Content(mediaType = "application/json", schema = @Schema(implementation = RuntimeException.class)) })
-    })
-    @PostMapping
-    public ResponseEntity<LuggageResponse> findAll(@RequestBody LuggageRequest luggageRequest) throws RestException {
-        return new ResponseEntity<>(luggageSavePort.save(luggageRequest), HttpStatus.CREATED);
-    }
+        @Operation(summary = "Create a new luggage")
+        @ApiResponses(value = {
+                        @ApiResponse(responseCode = "201", description = "Luggage created", content = {
+                                        @Content(mediaType = "application/json", schema = @Schema(implementation = LuggageResponse.class))
+                        }),
+                        @ApiResponse(responseCode = "400", description = "Invalid input"),
+                        @ApiResponse(responseCode = "500", description = "Internal server error", content = {
+                                        @Content(mediaType = "application/json", schema = @Schema(implementation = RuntimeException.class)) })
+        })
+        @PostMapping
+        public ResponseEntity<LuggageResponse> findAll(@RequestBody LuggageRequest luggageRequest)
+                        throws RestException {
+                return new ResponseEntity<>(luggageSaveService.save(luggageRequest), HttpStatus.CREATED);
+        }
 
-    @Operation(summary = "Get all luggages")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Luggages found", content = {
-                    @Content(mediaType = "application/json", schema = @Schema(implementation = LuggageResponse.class)) }),
-            @ApiResponse(responseCode = "500", description = "Internal server error", content = {
-                    @Content(mediaType = "application/json", schema = @Schema(implementation = RuntimeException.class)) })
-    })
-    @GetMapping
-    public ResponseEntity<List<LuggageResponse>> findAll() {
-        return new ResponseEntity<>(luggageFindPort.findAll(), HttpStatus.OK);
-    }
+        @Operation(summary = "Get all luggages")
+        @ApiResponses(value = {
+                        @ApiResponse(responseCode = "200", description = "Luggages found", content = {
+                                        @Content(mediaType = "application/json", schema = @Schema(implementation = LuggageResponse.class)) }),
+                        @ApiResponse(responseCode = "500", description = "Internal server error", content = {
+                                        @Content(mediaType = "application/json", schema = @Schema(implementation = RuntimeException.class)) })
+        })
+        @GetMapping
+        public ResponseEntity<List<LuggageResponse>> findAll() {
+                return new ResponseEntity<>(luggageFindService.findAll(), HttpStatus.OK);
+        }
 
-    @Operation(summary = "Get a luggage by id")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Luggage found", content = {
-                    @Content(mediaType = "application/json", schema = @Schema(implementation = LuggageResponse.class)) }),
-            @ApiResponse(responseCode = "500", description = "Internal server error", content = {
-                    @Content(mediaType = "application/json", schema = @Schema(implementation = RuntimeException.class)) })
-    })
-    @GetMapping("/{id}")
-    public ResponseEntity<Optional<LuggageResponse>> findById(@PathVariable Long id) {
-        return new ResponseEntity<>(luggageFindPort.findById(id), HttpStatus.OK);
-    }
+        @Operation(summary = "Get a luggage by id")
+        @ApiResponses(value = {
+                        @ApiResponse(responseCode = "200", description = "Luggage found", content = {
+                                        @Content(mediaType = "application/json", schema = @Schema(implementation = LuggageResponse.class)) }),
+                        @ApiResponse(responseCode = "500", description = "Internal server error", content = {
+                                        @Content(mediaType = "application/json", schema = @Schema(implementation = RuntimeException.class)) })
+        })
+        @GetMapping("/{id}")
+        public ResponseEntity<Optional<LuggageResponse>> findById(@PathVariable Long id) {
+                return new ResponseEntity<>(luggageFindService.findById(id), HttpStatus.OK);
+        }
 
-    @Operation(summary = "Delete a luggage by id")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "204", description = "Luggage deleted", content = @Content(mediaType = "application/json")),
-            @ApiResponse(responseCode = "404", description = "Luggage not found"),
-            @ApiResponse(responseCode = "500", description = "Internal server error", content = {
-                    @Content(mediaType = "application/json", schema = @Schema(implementation = RuntimeException.class)) })
-    })
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        luggageDeletePort.delete(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+        @Operation(summary = "Delete a luggage by id")
+        @ApiResponses(value = {
+                        @ApiResponse(responseCode = "204", description = "Luggage deleted", content = @Content(mediaType = "application/json")),
+                        @ApiResponse(responseCode = "404", description = "Luggage not found"),
+                        @ApiResponse(responseCode = "500", description = "Internal server error", content = {
+                                        @Content(mediaType = "application/json", schema = @Schema(implementation = RuntimeException.class)) })
+        })
+        @DeleteMapping("/{id}")
+        public ResponseEntity<Void> delete(@PathVariable Long id) {
+                luggageDeleteService.delete(id);
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        @Operation(summary = "Update a luggage by id")
+        @ApiResponses(value = {
+                        @ApiResponse(responseCode = "200", description = "Luggage updated", content = {
+                                        @Content(mediaType = "application/json", schema = @Schema(implementation = LuggageResponse.class)) }),
+                        @ApiResponse(responseCode = "404", description = "Luggage not found"),
+                        @ApiResponse(responseCode = "500", description = "Internal server error", content = {
+                                        @Content(mediaType = "application/json", schema = @Schema(implementation = RuntimeException.class)) })
+        })
+        @PutMapping("/{id}")
+        public ResponseEntity<LuggageResponse> update(@RequestBody LuggageRequest luggageRequest, @PathVariable Long id)
+                        throws RestException {
+                return new ResponseEntity<>(luggageUpdateService.update(luggageRequest, id), HttpStatus.OK);
+        }
 
 }

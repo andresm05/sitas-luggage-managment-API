@@ -15,7 +15,7 @@ public class LuggageValidation {
         if(extraCharge == null) {
             return true;
         }
-        return false;
+        return extraCharge >= 0;
     }
 
     public static boolean validateQuantity(Integer quantity) {

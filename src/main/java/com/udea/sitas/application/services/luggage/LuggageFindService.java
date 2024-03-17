@@ -11,9 +11,11 @@ import com.udea.sitas.domain.models.luggage.LuggageResponse;
 import com.udea.sitas.domain.ports.luggage.LuggageFindPort;
 import com.udea.sitas.infraestructure.repositories.LuggageRepository;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class LuggageFindService implements LuggageFindPort {
 

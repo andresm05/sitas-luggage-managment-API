@@ -11,9 +11,11 @@ import com.udea.sitas.domain.models.placementArea.PlacementAreaResponse;
 import com.udea.sitas.domain.ports.placementarea.PlacementAreaFindPort;
 import com.udea.sitas.infraestructure.repositories.PlacementAreaRepository;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class PlacementAreaFindService implements PlacementAreaFindPort {
 
