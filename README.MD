@@ -31,6 +31,8 @@ The following are the main endpoints provided by the SITAS Luggage Management AP
 - `POST /sitas/luggage`: Create a new luggage item.
 - `PUT /sitas/luggage/{id}`: Update an existing luggage item.
 - `DELETE /sitas/luggage/{id}`: Delete a luggage item by ID.
+- `GET /sitas/placement-area`: Retrieve all placement area items.
+- `GET /sitas/placement-area/{id}`: Retrieve a specific placement area item by ID.
 
 ## Documentation
 
