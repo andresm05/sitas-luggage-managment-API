@@ -1,4 +1,4 @@
-package com.udea.sitas.infraestructure.controllers;
+package com.udea.sitas.infraestructure.controllers.luggage;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,7 +33,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/luggage")
 @RequiredArgsConstructor
 // This class is the controller for the luggage entity
-public class LuggageController {
+public class LuggageCrudController {
 
         private final LuggageSaveService luggageSaveService;
         private final LuggageUpdateService luggageUpdateService;
