@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.udea.sitas.domain.models.luggage.LuggageResponse;
 
-public interface LuggageFindByPlacementAreaPort {
+public interface ILuggageFindByPlacementAreaPort {
 
     List<LuggageResponse> findByPlacementArea(Long placementAreaId);
     

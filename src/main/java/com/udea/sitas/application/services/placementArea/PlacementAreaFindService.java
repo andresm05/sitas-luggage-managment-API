@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.udea.sitas.domain.mappers.placementarea.PlacementAreaResponseMapper;
 import com.udea.sitas.domain.models.placementArea.PlacementAreaResponse;
-import com.udea.sitas.domain.ports.placementarea.PlacementAreaFindPort;
+import com.udea.sitas.domain.ports.placementarea.IPlacementAreaFindPort;
 import com.udea.sitas.infraestructure.repositories.PlacementAreaRepository;
 
 import jakarta.transaction.Transactional;
@@ -17,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class PlacementAreaFindService implements PlacementAreaFindPort {
+public class PlacementAreaFindService implements IPlacementAreaFindPort {
 
     private final PlacementAreaRepository placementAreaRepository;
 

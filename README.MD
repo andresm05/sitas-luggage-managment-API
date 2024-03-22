@@ -26,7 +26,7 @@ To get started with the SITAS Luggage Management API, follow these steps:
         DB_PASSWORD=Password to enable connection to the database
         ```
 
-    Keep in mind that the database used in this project is MySQL. If you want to use a different database, you will need to modify the dependencies in the `pom.xml` file accordingly.
+    Keep in mind that the database used in this project is ORACLE. If you want to use a different database, you will need to modify the dependencies in the `pom.xml` file accordingly.
 
 4.  **Run the Application**: Run the Spring Boot application
 5.  **Access the API**: Once the application is running, you can access the API endpoints using tools like Postman or by integrating it into your application.

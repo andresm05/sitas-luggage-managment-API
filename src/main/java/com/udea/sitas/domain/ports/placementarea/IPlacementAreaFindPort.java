@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import com.udea.sitas.domain.models.placementArea.PlacementAreaResponse;
 
-public interface PlacementAreaFindPort {
+public interface IPlacementAreaFindPort {
 
     List<PlacementAreaResponse> findAll();
 

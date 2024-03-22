@@ -1,6 +1,6 @@
 package com.udea.sitas.domain.ports.luggage;
 
-public interface LuggageDeletePort {
+public interface ILuggageDeletePort {
     
     void delete(Long id);
 }

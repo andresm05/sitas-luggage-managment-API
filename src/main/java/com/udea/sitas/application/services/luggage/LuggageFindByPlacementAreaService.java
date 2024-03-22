@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.udea.sitas.domain.entities.PlacementAreaEntity;
 import com.udea.sitas.domain.mappers.luggage.LuggageResponseMapper;
 import com.udea.sitas.domain.models.luggage.LuggageResponse;
-import com.udea.sitas.domain.ports.luggage.LuggageFindByPlacementAreaPort;
+import com.udea.sitas.domain.ports.luggage.ILuggageFindByPlacementAreaPort;
 import com.udea.sitas.infraestructure.repositories.LuggageRepository;
 import com.udea.sitas.infraestructure.repositories.PlacementAreaRepository;
 
@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class LuggageFindByPlacementAreaService implements LuggageFindByPlacementAreaPort {
+public class LuggageFindByPlacementAreaService implements ILuggageFindByPlacementAreaPort {
 
     private final LuggageRepository luggageRepository;
     private final PlacementAreaRepository placementAreaRepository;

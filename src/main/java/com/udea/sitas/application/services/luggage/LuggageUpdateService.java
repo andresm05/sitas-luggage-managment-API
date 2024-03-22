@@ -7,7 +7,7 @@ import com.udea.sitas.domain.entities.PlacementAreaEntity;
 import com.udea.sitas.domain.mappers.luggage.LuggageResponseMapper;
 import com.udea.sitas.domain.models.luggage.LuggageRequest;
 import com.udea.sitas.domain.models.luggage.LuggageResponse;
-import com.udea.sitas.domain.ports.luggage.LuggageUpdatePort;
+import com.udea.sitas.domain.ports.luggage.ILuggageUpdatePort;
 import com.udea.sitas.infraestructure.exceptions.NumberNotValidException;
 import com.udea.sitas.infraestructure.exceptions.RestException;
 import com.udea.sitas.infraestructure.repositories.LuggageRepository;
@@ -21,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Transactional
 // This class is the service for the luggage update use case
-public class LuggageUpdateService implements LuggageUpdatePort {
+public class LuggageUpdateService implements ILuggageUpdatePort {
 
     private final LuggageRepository luggageRepository;
     private final PlacementAreaRepository placementAreaRepository;

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.udea.sitas.domain.mappers.luggage.LuggageResponseMapper;
 import com.udea.sitas.domain.models.luggage.LuggageResponse;
-import com.udea.sitas.domain.ports.luggage.LuggageFindPort;
+import com.udea.sitas.domain.ports.luggage.ILuggageFindPort;
 import com.udea.sitas.infraestructure.repositories.LuggageRepository;
 
 import jakarta.transaction.Transactional;
@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 @Transactional
 @RequiredArgsConstructor
 // This class is the service for the luggage find use case
-public class LuggageFindService implements LuggageFindPort {
+public class LuggageFindService implements ILuggageFindPort {
 
     private final LuggageRepository luggageRepository;
 

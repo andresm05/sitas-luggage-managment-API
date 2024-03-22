@@ -4,7 +4,7 @@ import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
 
-import com.udea.sitas.domain.ports.luggage.LuggageDeletePort;
+import com.udea.sitas.domain.ports.luggage.ILuggageDeletePort;
 import com.udea.sitas.infraestructure.repositories.LuggageRepository;
 
 import jakarta.transaction.Transactional;
@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 @Transactional
 @RequiredArgsConstructor
 // This class is the service for the luggage delete use case
-public class LuggageDeleteService implements LuggageDeletePort {
+public class LuggageDeleteService implements ILuggageDeletePort {
 
     private final LuggageRepository luggageRepository;
 

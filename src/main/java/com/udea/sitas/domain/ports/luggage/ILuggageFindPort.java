@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import com.udea.sitas.domain.models.luggage.LuggageResponse;
 
-public interface LuggageFindPort {
+public interface ILuggageFindPort {
 
     List<LuggageResponse> findAll();
 
