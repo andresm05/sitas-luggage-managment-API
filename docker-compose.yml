@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+
+  #sitas app
+  sitas-app:
+    container_name: sitas-app
+    image: sitas-app:1.0.0
+    build: .
+    ports:
+      - "8080:8080"
+    
+    env_file:
+      - env.properties
+    
+    environment:
+      - DB_URL=${DB_URL}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
