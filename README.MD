@@ -35,14 +35,14 @@ To get started with the SITAS Luggage Management API, follow these steps:
 
 The following are the main endpoints provided by the SITAS Luggage Management API:
 
-- `GET /sitas/luggage`: Retrieve all luggage items.
-- `GET /sitas/luggage/{id}`: Retrieve a specific luggage item by ID.
-- `GET /sitas/luggage/placement-area/{id}`: Retrieve all luggage items by a    specific placement area
-- `POST /sitas/luggage`: Create a new luggage item.
-- `PUT /sitas/luggage/{id}`: Update an existing luggage item.
-- `DELETE /sitas/luggage/{id}`: Delete a luggage item by ID.
-- `GET /sitas/placement-area`: Retrieve all placement area items.
-- `GET /sitas/placement-area/{id}`: Retrieve a specific placement area item by ID.
+- `GET /sitas/v1/luggage`: Retrieve all luggage items.
+- `GET /sitas/v1/luggage/{id}`: Retrieve a specific luggage item by ID.
+- `GET /sitas/v1/luggage/placement-area/{id}`: Retrieve all luggage items by a    specific placement area
+- `POST /sitas/v1/luggage`: Create a new luggage item.
+- `PUT /sitas/v1/luggage/{id}`: Update an existing luggage item.
+- `DELETE /sitas/v1/luggage/{id}`: Delete a luggage item by ID.
+- `GET /sitas/v1/placement-area`: Retrieve all placement area items.
+- `GET /sitas/v1/placement-area/{id}`: Retrieve a specific placement area item by ID.
 
 ## Documentation
 
