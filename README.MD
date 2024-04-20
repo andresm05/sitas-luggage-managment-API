@@ -49,7 +49,7 @@ The following are the main endpoints provided by the SITAS Luggage Management AP
 For detailed information on each endpoint, refer to the API documentation
 locally using Swagger:
 
-- `http://localhost:8080/sitas/doc/swagger-ui.html`.
+- `http://localhost:8080/sitas/v1/doc/swagger-ui.html`.
 
 ## Contributing
 
