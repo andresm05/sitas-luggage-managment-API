@@ -18,7 +18,7 @@ To get started with the SITAS Luggage Management API, follow these steps:
 
 1.  **Clone the Repository**: Clone the project repository to your local machine.
 2.  **Build the Project**: Navigate to the project directory and build the project using Maven or your preferred build tool.
-3.  **Set Up Database Connection**: Create a file named `env.properties` in the root directory of your application. This file should contain the following information:
+3.  **Set Up Database Connection**: Create a file named `.env` in the root directory of your application. This file should contain the following information:
 
         ```
         DB_URL=URL String Connection to the database

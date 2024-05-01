@@ -1,5 +1,6 @@
 package com.udea.sitas.domain.entities;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,6 +20,7 @@ import lombok.NoArgsConstructor;
 @Setter
 @Table(name = "luggage")
 @NoArgsConstructor
+@Schema(name = "Luggage", description = "Luggage information")
 public class LuggageEntity {
 
     public LuggageEntity(String luggageType, Double extraCharge, Integer quantity, Double width, Double height,

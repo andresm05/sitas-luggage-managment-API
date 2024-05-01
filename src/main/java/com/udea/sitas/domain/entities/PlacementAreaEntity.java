@@ -1,5 +1,6 @@
 package com.udea.sitas.domain.entities;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,6 +19,7 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @Table(name = "placement_area")
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Schema(name = "PlacementArea", description = "Placement area information")
 public class PlacementAreaEntity {
 
     public PlacementAreaEntity(String name) {

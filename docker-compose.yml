@@ -2,18 +2,20 @@ version: '3.8'
 
 services:
 
-  #sitas app
-  sitas-app:
-    container_name: sitas-app
-    image: sitas-app:1.0.0
-    build: .
-    ports:
-      - "8089:8089"
-    
-    env_file:
-      - env.properties
-    
-    environment:
-      - DB_URL=${DB_URL}
-      - DB_USER=${DB_USER}
-      - DB_PASSWORD=${DB_PASSWORD}
+  api_service:
+      container_name: sitas-api
+      build: .
+      restart: unless-stopped
+      ports:
+        - 8089:8089
+      environment:
+        SPRING_DATASOURCE_URL: ${DB_URL}
+        SPRING_DATASOURCE_USERNAME: ${DB_USER}
+        SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+        SPRING_JPA_HIBERNATE_DDL_AUTO: update
+        SPRING_JPA_SHOW_SQL: true
+        
+env_file:
+  - .env
+
+  
