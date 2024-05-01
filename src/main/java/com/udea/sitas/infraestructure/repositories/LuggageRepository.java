@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.udea.sitas.domain.entities.LuggageEntity;
 import com.udea.sitas.domain.entities.PlacementAreaEntity;
 import java.util.List;
+import java.util.Optional;
 
 
 // This interface is the repository for the luggage entity
@@ -13,5 +14,7 @@ import java.util.List;
 public interface LuggageRepository extends JpaRepository<LuggageEntity, Long>{
 
     List<LuggageEntity> findByPlacementArea(PlacementAreaEntity placementArea);
+
+    Optional<LuggageEntity> findByUserId(Long userId);
     
 }

@@ -30,4 +30,16 @@ public class ControllerExceptionHandler extends RuntimeException {
 
     }
 
+    @ExceptionHandler(LuggageLimitException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorMessage handleLuggageLimitException(Exception e) {
+        return new ErrorMessage(e.getMessage(), "se ha alcanzado el límite de equipaje");
+    }
+
+    @ExceptionHandler(LuggageMeasurementException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorMessage handleLuggageMeasurementException(Exception e) {
+        return new ErrorMessage(e.getMessage(), "las medidas del equipaje no son válidas");
+    }
+
 }
