@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class AppConfig {
-    
+
     // This method configures the CORS policy
     @Bean
     WebMvcConfigurer corsConfigurer() {
@@ -15,7 +15,7 @@ public class AppConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:3000")
+                        .allowedOrigins("http://localhost:3000", "https://codefact.udea.edu.co")
                         .allowedMethods("GET", "POST", "PUT", "DELETE");
             }
         };
