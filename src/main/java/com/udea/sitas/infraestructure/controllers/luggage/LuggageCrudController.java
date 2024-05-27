@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -40,6 +42,7 @@ public class LuggageCrudController {
         private final LuggageFindService luggageFindService;
         private final LuggageDeleteService luggageDeleteService;
 
+        @SecurityRequirement(name = "JWT")
         @Operation(summary = "Create a new luggage")
         @ApiResponses(value = {
                         @ApiResponse(responseCode = "201", description = "Luggage created", content = {
@@ -55,6 +58,8 @@ public class LuggageCrudController {
                 return new ResponseEntity<>(luggageSaveService.save(luggageRequest), HttpStatus.CREATED);
         }
 
+        @SecurityRequirement(name = "JWT")
+        @PreAuthorize("hasRole('ADMIN')")
         @Operation(summary = "Get all luggages")
         @ApiResponses(value = {
                         @ApiResponse(responseCode = "200", description = "Luggages found", content = {
@@ -67,6 +72,7 @@ public class LuggageCrudController {
                 return new ResponseEntity<>(luggageFindService.findAll(), HttpStatus.OK);
         }
 
+        @SecurityRequirement(name = "JWT")
         @Operation(summary = "Get a luggage by id")
         @ApiResponses(value = {
                         @ApiResponse(responseCode = "200", description = "Luggage found", content = {
@@ -74,11 +80,14 @@ public class LuggageCrudController {
                         @ApiResponse(responseCode = "500", description = "Internal server error", content = {
                                         @Content(mediaType = "application/json", schema = @Schema(implementation = RuntimeException.class)) })
         })
+        @SecurityRequirement(name = "JWT")
         @GetMapping("/{id}")
         public ResponseEntity<Optional<LuggageResponse>> findById(@PathVariable Long id) {
                 return new ResponseEntity<>(luggageFindService.findById(id), HttpStatus.OK);
         }
 
+        @SecurityRequirement(name = "JWT")
+        @PreAuthorize("hasRole('ADMIN')")
         @Operation(summary = "Delete a luggage by id")
         @ApiResponses(value = {
                         @ApiResponse(responseCode = "204", description = "Luggage deleted", content = @Content(mediaType = "application/json")),
@@ -92,6 +101,7 @@ public class LuggageCrudController {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
+        @SecurityRequirement(name = "JWT")
         @Operation(summary = "Update a luggage by id")
         @ApiResponses(value = {
                         @ApiResponse(responseCode = "200", description = "Luggage updated", content = {
@@ -100,6 +110,7 @@ public class LuggageCrudController {
                         @ApiResponse(responseCode = "500", description = "Internal server error", content = {
                                         @Content(mediaType = "application/json", schema = @Schema(implementation = RuntimeException.class)) })
         })
+        @SecurityRequirement(name = "JWT")
         @PutMapping("/{id}")
         public ResponseEntity<LuggageResponse> update(@RequestBody LuggageRequest luggageRequest, @PathVariable Long id)
                         throws RestException {
