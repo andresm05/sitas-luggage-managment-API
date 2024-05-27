@@ -45,7 +45,6 @@ public class PlacementAreaController {
                 HttpStatus.OK);
     }
 
-    @SecurityRequirement(name = "JWT")
     @Operation(summary = "Get a placement area by id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Placement area found", content = {

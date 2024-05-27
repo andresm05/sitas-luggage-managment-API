@@ -43,6 +43,7 @@ public class LuggageCrudController {
         private final LuggageDeleteService luggageDeleteService;
 
         @SecurityRequirement(name = "JWT")
+        @PreAuthorize("hasRole('USER', 'ADMIN')")
         @Operation(summary = "Create a new luggage")
         @ApiResponses(value = {
                         @ApiResponse(responseCode = "201", description = "Luggage created", content = {
@@ -73,6 +74,7 @@ public class LuggageCrudController {
         }
 
         @SecurityRequirement(name = "JWT")
+        @PreAuthorize("hasRole('USER', 'ADMIN')")
         @Operation(summary = "Get a luggage by id")
         @ApiResponses(value = {
                         @ApiResponse(responseCode = "200", description = "Luggage found", content = {
@@ -80,7 +82,6 @@ public class LuggageCrudController {
                         @ApiResponse(responseCode = "500", description = "Internal server error", content = {
                                         @Content(mediaType = "application/json", schema = @Schema(implementation = RuntimeException.class)) })
         })
-        @SecurityRequirement(name = "JWT")
         @GetMapping("/{id}")
         public ResponseEntity<Optional<LuggageResponse>> findById(@PathVariable Long id) {
                 return new ResponseEntity<>(luggageFindService.findById(id), HttpStatus.OK);
@@ -102,6 +103,7 @@ public class LuggageCrudController {
         }
 
         @SecurityRequirement(name = "JWT")
+        @PreAuthorize("hasRole('ADMIN', 'USER')")
         @Operation(summary = "Update a luggage by id")
         @ApiResponses(value = {
                         @ApiResponse(responseCode = "200", description = "Luggage updated", content = {
@@ -110,7 +112,6 @@ public class LuggageCrudController {
                         @ApiResponse(responseCode = "500", description = "Internal server error", content = {
                                         @Content(mediaType = "application/json", schema = @Schema(implementation = RuntimeException.class)) })
         })
-        @SecurityRequirement(name = "JWT")
         @PutMapping("/{id}")
         public ResponseEntity<LuggageResponse> update(@RequestBody LuggageRequest luggageRequest, @PathVariable Long id)
                         throws RestException {
