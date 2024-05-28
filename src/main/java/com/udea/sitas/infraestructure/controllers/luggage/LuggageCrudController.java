@@ -44,7 +44,8 @@ public class LuggageCrudController {
 
         @SecurityRequirement(name = "JWT")
         @PreAuthorize("hasRole('USER') || hasRole('ADMIN')")
-        @Operation(summary = "Create a new luggage")
+        @Operation(summary = "Create a new luggage",
+        security = @SecurityRequirement(name = "bearerAuth"))
         @ApiResponses(value = {
                         @ApiResponse(responseCode = "201", description = "Luggage created", content = {
                                         @Content(mediaType = "application/json", schema = @Schema(implementation = LuggageResponse.class))
