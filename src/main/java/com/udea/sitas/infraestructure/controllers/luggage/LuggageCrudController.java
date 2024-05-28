@@ -43,7 +43,7 @@ public class LuggageCrudController {
         private final LuggageDeleteService luggageDeleteService;
 
         @SecurityRequirement(name = "JWT")
-        @PreAuthorize("hasRole('USER', 'ADMIN')")
+        @PreAuthorize("hasRole('USER') || hasRole('ADMIN')")
         @Operation(summary = "Create a new luggage")
         @ApiResponses(value = {
                         @ApiResponse(responseCode = "201", description = "Luggage created", content = {
@@ -74,7 +74,7 @@ public class LuggageCrudController {
         }
 
         @SecurityRequirement(name = "JWT")
-        @PreAuthorize("hasRole('USER', 'ADMIN')")
+        @PreAuthorize("hasRole('USER') || hasRole('ADMIN')")
         @Operation(summary = "Get a luggage by id")
         @ApiResponses(value = {
                         @ApiResponse(responseCode = "200", description = "Luggage found", content = {
@@ -103,7 +103,7 @@ public class LuggageCrudController {
         }
 
         @SecurityRequirement(name = "JWT")
-        @PreAuthorize("hasRole('ADMIN', 'USER')")
+        @PreAuthorize("hasRole('ADMIN') || hasRole('USER')")
         @Operation(summary = "Update a luggage by id")
         @ApiResponses(value = {
                         @ApiResponse(responseCode = "200", description = "Luggage updated", content = {
