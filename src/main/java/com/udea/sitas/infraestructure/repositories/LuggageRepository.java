@@ -1,6 +1,7 @@
 package com.udea.sitas.infraestructure.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
 import com.udea.sitas.domain.entities.LuggageEntity;
@@ -11,6 +12,7 @@ import java.util.Optional;
 
 // This interface is the repository for the luggage entity
 @Repository
+@RepositoryRestResource(collectionResourceRel = "luggage", path = "luggage")
 public interface LuggageRepository extends JpaRepository<LuggageEntity, Long>{
 
     List<LuggageEntity> findByPlacementArea(PlacementAreaEntity placementArea);
