@@ -17,9 +17,11 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
 @RestController
+@Tag(name = "Luggage By Placement Area Controller", description = "The luggage by placement area API")
 @RequestMapping("/luggage/placement-area")
 @RequiredArgsConstructor
 public class LuggageByPlacementAreaController {
