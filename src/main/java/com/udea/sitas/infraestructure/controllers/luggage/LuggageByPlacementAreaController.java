@@ -28,7 +28,8 @@ public class LuggageByPlacementAreaController {
 
     private final LuggageFindByPlacementAreaService luggageFindByPlacementAreaService;
 
-    @Operation(summary = "Get all luggages by a specific placement area")
+    @Operation(summary = "Get all luggages by a specific placement area",
+    security = @SecurityRequirement(name = "bearerAuth"))
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Luggages found", content = {
                     @Content(mediaType = "application/json", schema = @Schema(implementation = LuggageResponse.class))

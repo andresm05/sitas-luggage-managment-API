@@ -30,7 +30,8 @@ public class PlacementAreaController {
 
     private final PlacementAreaFindService placementAreaFindService;
 
-    @Operation(summary = "Get all placement areas")
+    @Operation(summary = "Get all placement areas",
+    security = @SecurityRequirement(name = "bearerAuth"))
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Placement areas found", content = {
                     @Content(mediaType = "application/json", schema = @Schema(implementation = PlacementAreaResponse.class)) }),
@@ -45,7 +46,8 @@ public class PlacementAreaController {
                 HttpStatus.OK);
     }
 
-    @Operation(summary = "Get a placement area by id")
+    @Operation(summary = "Get a placement area by id",
+    security = @SecurityRequirement(name = "bearerAuth"))
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Placement area found", content = {
                     @Content(mediaType = "application/json", schema = @Schema(implementation = PlacementAreaResponse.class)) }),

@@ -61,7 +61,8 @@ public class LuggageCrudController {
 
         @SecurityRequirement(name = "JWT")
         @PreAuthorize("hasRole('ADMIN')")
-        @Operation(summary = "Get all luggages")
+        @Operation(summary = "Get all luggages",
+        security = @SecurityRequirement(name = "bearerAuth"))
         @ApiResponses(value = {
                         @ApiResponse(responseCode = "200", description = "Luggages found", content = {
                                         @Content(mediaType = "application/json", schema = @Schema(implementation = LuggageResponse.class)) }),
@@ -75,7 +76,8 @@ public class LuggageCrudController {
 
         @SecurityRequirement(name = "JWT")
         @PreAuthorize("hasRole('USER') || hasRole('ADMIN')")
-        @Operation(summary = "Get a luggage by id")
+        @Operation(summary = "Get a luggage by id",
+        security = @SecurityRequirement(name = "bearerAuth"))
         @ApiResponses(value = {
                         @ApiResponse(responseCode = "200", description = "Luggage found", content = {
                                         @Content(mediaType = "application/json", schema = @Schema(implementation = LuggageResponse.class)) }),
@@ -89,7 +91,8 @@ public class LuggageCrudController {
 
         @SecurityRequirement(name = "JWT")
         @PreAuthorize("hasRole('ADMIN')")
-        @Operation(summary = "Delete a luggage by id")
+        @Operation(summary = "Delete a luggage by id",
+        security = @SecurityRequirement(name = "bearerAuth"))
         @ApiResponses(value = {
                         @ApiResponse(responseCode = "204", description = "Luggage deleted", content = @Content(mediaType = "application/json")),
                         @ApiResponse(responseCode = "404", description = "Luggage not found"),
@@ -104,7 +107,8 @@ public class LuggageCrudController {
 
         @SecurityRequirement(name = "JWT")
         @PreAuthorize("hasRole('ADMIN') || hasRole('USER')")
-        @Operation(summary = "Update a luggage by id")
+        @Operation(summary = "Update a luggage by id",
+        security = @SecurityRequirement(name = "bearerAuth"))
         @ApiResponses(value = {
                         @ApiResponse(responseCode = "200", description = "Luggage updated", content = {
                                         @Content(mediaType = "application/json", schema = @Schema(implementation = LuggageResponse.class)) }),
